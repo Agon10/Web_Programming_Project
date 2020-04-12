@@ -1,0 +1,177 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection) or
+# paste cURL into the file and request will be converted to HTTP Request format.
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+#Create User
+POST http://localhost:8080/users/register
+Content-Type: application/x-www-form-urlencoded
+
+name=AgonXh&culture=Albanian&culture_description=Decent Culture&languages=albanian,english&password=vegeta
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("slotId"), 'Can not find the slotId');
+  client.global.set("newSlotUrl", response.headers.valueOf("Location"));
+  client.global.set("slotId", response.body["slotId"]);
+});
+
+########### Get Users
+GET http://localhost:8080/users
+Content-Type: application/x-www-form-urlencoded
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("slotId"), 'Can not find the slotId');
+  client.global.set("newSlotUrl", response.headers.valueOf("Location"));
+  client.global.set("slotId", response.body["slotId"]);
+});
+######################## Get By Culture
+
+GET http://localhost:8080/users/culture?cult=albanian
+Content-Type: application/x-www-form-urlencoded
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("slotId"), 'Can not find the slotId');
+  client.global.set("newSlotUrl", response.headers.valueOf("Location"));
+  client.global.set("slotId", response.body["slotId"]);
+});
+
+
+############## Create Language
+POST http://localhost:8080/users/languages
+Content-Type: application/x-www-form-urlencoded
+
+languages=albanian
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("slotId"), 'Can not find the slotId');
+  client.global.set("newSlotUrl", response.headers.valueOf("Location"));
+  client.global.set("slotId", response.body["slotId"]);
+});
+
+##############
+POST http://localhost:8080/user/post
+Content-Type: application/x-www-form-urlencoded
+
+user_id1=Agoni&user_id2=Egzon&message=o rr ka me ti q
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("slotId"), 'Can not find the slotId');
+  client.global.set("newSlotUrl", response.headers.valueOf("Location"));
+  client.global.set("slotId", response.body["slotId"]);
+});
+
+###
+###
+
+GET http://localhost:8080/user/post/sender/4
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("slotId"), 'Can not find the slotId');
+  client.global.set("newSlotUrl", response.headers.valueOf("Location"));
+  client.global.set("slotId", response.body["slotId"]);
+});
+
+
+###
+GET http://localhost:8080/user/post/receiver/
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("slotId"), 'Can not find the slotId');
+  client.global.set("newSlotUrl", response.headers.valueOf("Location"));
+  client.global.set("slotId", response.body["slotId"]);
+});
+
+
+###
+DELETE http://localhost:8080/users/6
+Content-Type: application/x-www-form-urlencoded
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("slotId"), 'Can not find the slotId');
+  client.global.set("newSlotUrl", response.headers.valueOf("Location"));
+  client.global.set("slotId", response.body["slotId"]);
+});
+
+
+###
+GET http://localhost:8080/users/Agon100
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("slotId"), 'Can not find the slotId');
+  client.global.set("newSlotUrl", response.headers.valueOf("Location"));
+  client.global.set("slotId", response.body["slotId"]);
+});
+######################
+POST http://localhost:8080/users/follow/1/3
+Content-Type: application/x-www-form-urlencoded
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("slotId"), 'Can not find the slotId');
+  client.global.set("newSlotUrl", response.headers.valueOf("Location"));
+  client.global.set("slotId", response.body["slotId"]);
+});
+
+
+###
+
+#LoginUser
+POST http://localhost:8080/users/login
+Content-Type: application/x-www-form-urlencoded
+
+name=Agon Xhaferi&password=vegeta
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("slotId"), 'Can not find the slotId');
+  client.global.set("newSlotUrl", response.headers.valueOf("Location"));
+  client.global.set("slotId", response.body["slotId"]);
+});
+
+
+###
+
+GET http://localhost:8080/users/followers/Agoni
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("slotId"), 'Can not find the slotId');
+  client.global.set("newSlotUrl", response.headers.valueOf("Location"));
+  client.global.set("slotId", response.body["slotId"]);
+});
+######################
